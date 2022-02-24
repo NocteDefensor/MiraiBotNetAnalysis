@@ -14,7 +14,7 @@
 	alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"ET WEB_SERVER Possible D-Link Router HNAP Protocol Security Bypass Attempt"; flow:established,to_server; urilen:7; http.method; content:"POST"; http.uri; content:"/HNAP1/"; nocase; endswith; fast_pattern; http.header; content:"SOAPAction|3a 20|"; nocase; content:"/HNAP1/"; distance:0; pcre:"/^(?:set|get)/Ri"; content:"DeviceSettings"; within:14; reference:url,www.securityfocus.com/bid/37690; reference:url,doc.emergingthreats.net/2010698; classtype:web-application-attack; sid:2010698; rev:6; metadata:created_at 2010_07_30, updated_at 2020_11_02;)
 ```
 - Lets break this Suricata signature down.
-    1. The rule is an "alert" rule looking at http traffic from any port inbound from the variable EXTERNAL_NET to the networks assigned to the variable HOME_NET on any port.
+    1. The rule is an "alert" rule looking at http traffic from any port inbound from the variable EXTERNAL_NET to the networks assigned to the variable HOME_NET on any port. This is followed by the message as denoted by "msg" which basically tells us what the alert is firing for.
     2.  The flow is set to established which means it will only match on established connections. Direction is "to server." 
     3. We see the "urilen" which sets a uri length of 7 characters. 
     4. We then see a sticky buffer of "http.method" which modifies the content "POST" which come after it. That is telling the logic to look in the http.method field for content of "POST." If the http.method field has a GET or any method other then POST, the logic won't continue to run and the rule won't fire. 
