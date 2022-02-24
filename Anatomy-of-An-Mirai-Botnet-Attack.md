@@ -34,8 +34,7 @@
 13. Right after the PCRE we see another content match looking for "DeviceSettings" This is followed by a distance modifier of "within: 14. This is best explained with another picture
 ![image.png](/.attachments/image-c6c457e7-6c99-49f2-9ec6-97adf0a4f158.png)
 
-13. Thats it for the logic of the rule. Following the logic we have the Signature ID(SID) and some references and metadata(when the rule was created)
-
+13. Thats it for the logic of the rule. Following the logic we have some reference links, the classtype(which signifies which kind of attack it is),  Signature ID(SID), the revision number, and some metadata which tells us when it was created or modified. 
 ### The Traffic it matched on
 
 ![image.png](/.attachments/image-e052bfb3-7be3-4d92-9713-607756a2e185.png)
