@@ -108,3 +108,7 @@ https://www.joesandbox.com/analysis/576941/0/html
 - Yara rules for detection. 
 
 ![Ghidra.png](/.attachments/Ghidra-1beaa57c-010a-4612-b0c4-46c43b4d57fe.png)
+
+### UPDATE
+
+- Yara rules can be found [Here](/Anatomy-of-An-Mirai-Botnet-Attack/Yara-Rules)
